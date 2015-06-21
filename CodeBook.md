@@ -46,14 +46,14 @@ The total number of rows in this data set if 11,880 (30 subjects * 6 activities 
 
 The measures column contains 66 possible values summarized below. As in the original features_info.txt file, '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions. 
 - Prefix Letter: 
-	+'t' indicates a "time domain" value
-	+'f' indicates a "frequency domain" value
+	-'t' indicates a "time domain" value
+	-'f' indicates a "frequency domain" value
 - Measurement type:
-	+BodyAcc - Body Accelerometer
-	+GravityAcc - Gravity Accelerometer
-	+BodyGyro - Body Gyroscope
-	+...Jerk - Indicates "Jerk" data calculated using the Body Accelerometer or Body Gyroscope with the angular velocity
-	+...Mag - Indicates "Magnitude" values which were calculated using the "Euclidean norm"
+	-BodyAcc - Body Accelerometer
+	-GravityAcc - Gravity Accelerometer
+	-BodyGyro - Body Gyroscope
+	-...Jerk - Indicates "Jerk" data calculated using the Body Accelerometer or Body Gyroscope with the angular velocity
+	-...Mag - Indicates "Magnitude" values which were calculated using the "Euclidean norm"
 - Calculation:
 	+mean - Mean measurement 
 	+std - Standard deviation measurement
