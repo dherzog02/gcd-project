@@ -1,11 +1,11 @@
 #Summary
 
-This file describes the contents of the run_analysis.R file and how that file completes the steps required by the Coursera Getting and Cleaning Data course project. The instructions for the course project are to create a script that does the following:
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names. 
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+This file describes the contents of the run_analysis.R file and how that file completes the steps required by the Coursera Getting and Cleaning Data course project. The instructions for the course project are to create a script that does the following:  
+1. Merges the training and the test sets to create one data set.  
+2. Extracts only the measurements on the mean and standard deviation for each measurement.  
+3. Uses descriptive activity names to name the activities in the data set  
+4. Appropriately labels the data set with descriptive variable names.  
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.  
 
 This file describes each function and the steps taken by the script to reach step 5. The resulting data set is described in the [CodeBook.md] file.
 
@@ -94,4 +94,4 @@ The final result is two variables in the global environment called filtData and 
 
 write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
 
-*Note: The first step of adding "-summarized" is included because the original data is already a summary, either the "mean" or "standard deviation" of a measured value.  We are further summarizing by taking the **mean** of that feature over multiple instances of each subject performing each activity. It was also because filtData and tidyData would contain very similar column names/Measure values and this served to highlight that they are different.*
+*Note: The final step of adding "-summarized" is included because the original data is already a summary, either the "mean" or "standard deviation" of a measured value.  We are further summarizing by taking the __mean__ of that feature over multiple instances of each subject performing each activity. It was also because filtData and tidyData would contain very similar column names & Measure values and this served to highlight that they are different.*

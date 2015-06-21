@@ -13,11 +13,11 @@ This script creates two variables in the global environment called filtData and 
 
 write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
 
-*Note: The write.table function actually uses "row.names" argument. The instructions for the project indicate "row.name" which is used because it is a partial match for the correct argument.*
+*Note: The write.table function actually has a "row.names" argument. The instructions for the project indicate that the write.table function should be called with "row.name=FALSE" which works because it is a partial match for the argument.*
 
 filtData is the combined & filtered data set that is the result of the first four steps of the Getting and Cleaning Data Course project. A second data table is created called tidyData that meets the requirements of step 5.
 
-The data can be read into R using the following, assuming that tidyData.txt has been downloaded into the working directory:
+The data can be read into R using the following code, assuming that tidyData.txt has been downloaded into the working directory:
 
 tidyCopy <- read.table(file = "tidyData.txt", header =  TRUE, colClasses = c("factor","factor","character","numeric"))
 
@@ -36,9 +36,9 @@ The experiment measured the accelerometer and gyroscope data from a Samsung Gala
 The tidyData.txt file uses the melted form of tidy data as described by Hadley Wickham's paper available at <http://vita.had.co.nz/papers/tidy-data.pdf>. The four columns in this data set are:
 
 - Subject - One of thirty subjects numbers 1:30. The original script coerces this column to a Factor.
-- Activity - One of six different activities: WALKING, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+- Activity - One of six different activities: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 - Measure - One of sixty-six different measures described below.
-- Value - The numeric value for that measure. All measures were bounded within [-1,1] from the original data set.
+- Value - The numeric value for that measure. All measures were normalized and bounded within [-1,1] in the original data set.
 
 The total number of rows in this data set if 11,880 (30 subjects * 6 activities * 66 measures).
 
