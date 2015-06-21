@@ -90,10 +90,10 @@ The new data table is created calls newdt. The names are set with a single state
 The run_ananlysis function takes no arguments and returns a data table that meets the requirements of steps 1-4 from the assignment instructions. 
 
 1. Reads the data from the various source files using the consolidate function
-2. Since Subject is stored using integers 1:30, this column is converted to a Factor
+2. Since Subject is stored using integers 1:30, this column is coerced to a Factor
 3. Calculates a numeric vector of the columns to keep using the filterc() function
 4. The data is then transformed as follows:
-  a. First the data is filtered using the vector from step 3
+  a. First the data is filtered using the select function on merged data based on the columns from the vector calculated in step 3
   b. New names are applied to the data set using the newnames() function
   c. The Activity column is converted to human readable activity names using the activitynames() function
 5. The resulting data table is returned by the function
