@@ -15,7 +15,7 @@ consolidate <- function()
   if (sum(!file.exists(filelist)) >0) stop("One or more files ")
   
   dt.train <- as.data.table(read.table(filelist[2]))
-  #Need to eliminate the duplicate columns called V1
+  
   for (filename in filelist[3:4])
   {
     dt.train <- cbind(dt.train, read.table(filename))
@@ -70,7 +70,7 @@ newnames <- function(olddt, filtercols)
 
 run_analysis <- function()
 {
-  # This funciton completes the first four instructions of the assignment through the following steps:
+  # This function completes the first four instructions of the assignment through the following steps:
   # 1. Reads the data from the various source files using the consolidate function
   # 2. Since Subject is stored using integers 1:30, this column is converted to a Factor
   # 3. Calculates a numeric vector of the columns to keep using the filterc() function
@@ -81,7 +81,7 @@ run_analysis <- function()
   # 5. The resulting data table is returned by the function
   
   filtData <- consolidate() 
-  filtData$Subject <- factor(filtData$Subject) # Convert the Subject column to a factor, it is read as an integer
+  filtData$Subject <- factor(filtData$Subject) 
   filtercols <- filterc() 
   
   filtData <- select(filtData, filtercols) %>%

@@ -9,12 +9,16 @@ output:html_document
 
 ##Summary
 
-The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. This script creates two variables in the global environment called filtData and tidyData. After running the script the "tidyData.txt" file is created with the following line of code:
+This script creates two variables in the global environment called filtData and tidyData. The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. The specific steps taken in the script are outlined in the [README.md] file. After running the script the "tidyData.txt" file is created with the following line of code:
+
 write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
+
+*Note: The write.table function actually uses "row.names" argument. The instructions for the project indicate "row.name" which is used because it is a partial match for the correct argument.*
 
 filtData is the combined & filtered data set that is the result of the first four steps of the Getting and Cleaning Data Course project. A second data table is created called tidyData that meets the requirements of step 5.
 
 The data can be read into R using the following, assuming that tidyData.txt has been downloaded into the working directory:
+
 tidyCopy <- read.table(file = "tidyData.txt", header =  TRUE, colClasses = c("factor","factor","character","numeric"))
 
 ##Source of the data
@@ -23,9 +27,7 @@ The source of the data is from the Human Activity Recognition Using Smartphones 
 
 The original data is available here: <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
-This data has already been through a number of transformations and calculations. Those calculations are described in detail in the "features_info.txt" and "README.txt" files located in the zip file. 
-
- 
+The experiment measured the accelerometer and gyroscope data from a Samsung Galaxy S II.  The original observations were from thirty subjects performing six different tasks a number of times. The data was then summarized into 561 different features of the data. The data used as input to this script has already been through a number of transformations and calculations. Those calculations are described in detail in the "features_info.txt" and "README.txt" files located in the original zip file.
 
 #Contents
 
