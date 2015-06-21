@@ -10,6 +10,28 @@ This file describes the contents of the run_analysis.R file and how that file co
 
 This file describes each function and the steps taken by the script to reach step 5. The resulting data set is described in the [CodeBook.md](CodeBook.md) file.
 
+#Commands
+
+The following commands are executed at the end of this script to complete the requirements are the assignment. They use the various functions that are defined prior to those commands. The function descriptions are below.
+
+First, the required libraries are loaded. It is assumed that they are already installed. This script uses the data.table, dplyr and reshape2 libraries.
+
+A variable called filtData is created by calling the run_analysis() function. This variable meets the requirements of steps 1-4.
+
+To meet the requirements of step 5, a second data table is created called tidyData. The following steps are used to create this data set:
+
+1. The filtData is grouped by Subject and Activity using the group_by function
+2. All of the remaining 66 columns are summarized using the summarise_each function, providing it with the "mean" function.
+3. The data set is melted using the melt function. Columns 1:2 (Subject, Actviity) are assigned as id variables and the remaining columns 3:68 are measures.
+4. The columns of the melted data set are renamed to "Subject","Activity","Measure", and "Value"
+5. "-summarized" is appended to the values in the Measure column using the mutate and paste functions
+
+The final result is two variables in the global environment called filtData and tidyData. The tidyData.txt file is created with the following command:
+
+write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
+
+*Note: The final step of adding "-summarized" is included because the original data is already a summary, either the "mean" or "standard deviation" of a measured value.  We are further summarizing by taking the __mean__ of that feature over multiple instances of each subject performing each activity. It was also because filtData and tidyData would contain very similar column names & Measure values and this served to highlight that they are different.*
+
 #Function Descriptions
 
 ##consolidate()
@@ -75,25 +97,3 @@ The run_ananlysis function takes no arguments and returns a data table that meet
   b. New names are applied to the data set using the newnames() function
   c. The Activity column is converted to human readable activity names using the activitynames() function
 5. The resulting data table is returned by the function
-
-##Commands
-
-The following commands are executed at the end of this script to complete the requirements are the assignment.
-
-First, the required libraries are loaded. It is assumed that they are already installed. This script uses the data.table, dplyr and reshape2 libraries.
-
-A variable called filtData is created by calling the run_analysis() function. This variable meets the requirements of steps 1-4.
-
-To meet the requirements of step 5, a second data table is created called tidyData. The following steps are used to create this data set:
-
-1. The filtData is grouped by Subject and Activity using the group_by function
-2. All of the remaining 66 columns are summarized using the summarise_each function, providing it with the "mean" function.
-3. The data set is melted using the melt function. Columns 1:2 (Subject, Actviity) are assigned as id variables and the remaining columns 3:68 are measures.
-4. The columns of the melted data set are renamed to "Subject","Activity","Measure", and "Value"
-5. "-summarized" is appended to the values in the Measure column using the mutate and paste functions
-
-The final result is two variables in the global environment called filtData and tidyData. The tidyData.txt file is created with the following command:
-
-write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
-
-*Note: The final step of adding "-summarized" is included because the original data is already a summary, either the "mean" or "standard deviation" of a measured value.  We are further summarizing by taking the __mean__ of that feature over multiple instances of each subject performing each activity. It was also because filtData and tidyData would contain very similar column names & Measure values and this served to highlight that they are different.*
