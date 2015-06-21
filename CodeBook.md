@@ -54,6 +54,7 @@ The measures column contains 66 possible values summarized below. As in the orig
   -BodyGyro - Body Gyroscope
   -...Jerk - Indicates "Jerk" data calculated using the Body Accelerometer or Body Gyroscope with the angular velocity
   -...Mag - Indicates "Magnitude" values which were calculated using the "Euclidean norm"
+  
 - Calculation:
   -mean - Mean measurement 
   -std - Standard deviation measurement
