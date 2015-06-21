@@ -1,15 +1,15 @@
 ---
-title:"CodeBook"
-author:"dherzog02"
-date:"June 20,2015"
-output:html_document
+title:"CodeBook"  
+author:"dherzog02"  
+date:"June 20,2015"  
+output:html_document  
 ---
 
 #Description
 
 ##Summary
 
-This script creates two variables in the global environment called filtData and tidyData. The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. The specific steps taken in the script are outlined in the [README.md](README.md) file. After running the script the "tidyData.txt" file is created with the following line of code:
+This script creates two data sets in the global environment called filtData and tidyData. The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. The specific steps taken in the script are outlined in the [README.md](README.md) file. After running the script the "tidyData.txt" file is created with the following line of code:
 
 write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
 
@@ -19,7 +19,11 @@ filtData is the combined & filtered data set that is the result of the first fou
 
 The data can be read into R using the following code, assuming that tidyData.txt has been downloaded into the working directory:
 
-tidyCopy <- read.table(file = "tidyData.txt", header =  TRUE, colClasses = c("factor","factor","character","numeric"))
+tidyData <- read.table(file = "tidyData.txt", header =  TRUE, colClasses = c("factor","factor","character","numeric"))
+
+To convert this back to the "wide form" use the following code:
+
+widetidyData <- dcast(tidyData, Subject + Activity ~ Measure, mean, value.var = "Value")
 
 ##Source of the data
 
@@ -46,7 +50,8 @@ The total number of rows in this data set if 11,880 (30 subjects * 6 activities 
 
 ###Description of names
 
-The measures column contains 66 possible values summarized below. As in the original features_info.txt file, '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions. 
+The measures column contains 66 possible values summarized below. 
+
 * Prefix Letter: 
   * 't' indicates a "time domain" value
   * 'f' indicates a "frequency domain" value

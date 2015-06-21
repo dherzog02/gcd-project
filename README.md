@@ -12,7 +12,7 @@ This file describes each function and the steps taken by the script to reach ste
 
 #Commands
 
-The following commands are executed at the end of this script to complete the requirements are the assignment. They use the various functions that are defined prior to those commands. The function descriptions are below.
+The following commands are executed at the end of this script to complete the requirements of the assignment. They use the various functions that are defined prior to those commands. The function descriptions are below.
 
 First, the required libraries are loaded. It is assumed that they are already installed. This script uses the data.table, dplyr and reshape2 libraries.
 
@@ -44,9 +44,9 @@ The function then loads the training data set into a variable called dt.train by
 * y_train.txt
 * x_train.txt
 
-A similar variable called dt.test is created by loading the corresponding files from the test directory. In each case, the first file is read as the first variable and the subsequent files are appended as column using the cbind function. This results in the first column being the subject, the second column being the activity and 561 "feature" columns.
+A similar variable called dt.test is created by loading the corresponding files from the test directory. In each case, the first file is read as the first column and the subsequent files are appended as columns using the cbind function. This results in the first column being the subject, the second column being the activity followed by 561 "feature" columns.
 
-At this point, the first three columns are named "V1" due to the way read.table reads the data. This would cause problems later on if not addressed so the first two column names are set to be "Subject" and "Activity". This is done for both the dt.train and dt.test variables.
+At this point, the first three columns are named "V1" due to the lack of column headers. This would cause problems later on if not addressed so the first two column names are set to be "Subject" and "Activity". This is done for both the dt.train and dt.test variables.
 
 Finally, the merged data set is returned using rbind and passing the dt.train and dt.test data tables as arguments.
 
@@ -66,13 +66,13 @@ The activitynames function takes no arguments and returns a vector contain the a
 
 The "activity_labels.txt" file contains two columns, a numeric index and the text label such as "WALKING_UPSTAIRS", etc. The first step is to read the second column, the readable names, into a variable called mynames. 
 
-The second step reads the first column and assigns those values and names.
+The second step reads the first column and assigns those values as names of the values.
 
 The mynames vector is returned.
 
 ##newnames(olddt, filtercols)
 
-The newnames function takes a data table (olddt) and a numeric vector (filtercols) as its arguments. The data table should already be filtered down to the Subject, Activity and 66 different measurements identified. The function returns a data table with the names read from the "features.txt" file.
+The newnames function takes a data table (olddt) and a numeric vector (filtercols) as its arguments. The data table should already be selected down to the Subject, Activity and 66 different measurements identified. The function returns a data table with the names read from the "features.txt" file.
 
 The new data table is created calls newdt. The names are set with a single statement that does the following:
 * Call the function setnames with olddt as the source data
@@ -93,7 +93,7 @@ The run_ananlysis function takes no arguments and returns a data table that meet
 2. Since Subject is stored using integers 1:30, this column is coerced to a Factor
 3. Calculates a numeric vector of the columns to keep using the filterc() function
 4. The data is then transformed as follows:
-  a. First the data is filtered using the select function on merged data based on the columns from the vector calculated in step 3
-  b. New names are applied to the data set using the newnames() function
-  c. The Activity column is converted to human readable activity names using the activitynames() function
+  * First the data is filtered using the select function on merged data based on the columns from the vector calculated in step 3
+  * New names are applied to the data set using the newnames() function
+  * The Activity column is converted to human readable activity names using the activitynames() function
 5. The resulting data table is returned by the function
