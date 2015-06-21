@@ -85,6 +85,7 @@ First, the required libraries are loaded. It is assumed that they are already in
 A variable called filtData is created by calling the run_analysis() function. This variable meets the requirements of steps 1-4.
 
 To meet the requirements of step 5, a second data table is created called tidyData. The following steps are used to create this data set:
+
 1. The filtData is grouped by Subject and Activity using the group_by function
 2. All of the remaining 66 columns are summarized using the summarise_each function, providing it with the "mean" function.
 3. The data set is melted using the melt function. Columns 1:2 (Subject, Actviity) are assigned as id variables and the remaining columns 3:68 are measures.
