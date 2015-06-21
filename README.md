@@ -7,7 +7,7 @@ This file describes the contents of the run_analysis.R file and how that file co
 4. Appropriately labels the data set with descriptive variable names.  
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.  
 
-This file describes each function and the steps taken by the script to reach step 5. The resulting data set is described in the [CodeBook.md] file.
+This file describes each function and the steps taken by the script to reach step 5. The resulting data set is described in the [CodeBook.md](CodeBook.md) file.
 
 #Function Descriptions
 
@@ -29,7 +29,7 @@ Finally, the merged data set is returned using rbind and passing the dt.train an
 
 ##filterc()
 
-The filterc function takes no arguments and returns a numeric vector that contains the column numberss we want to keep from the merged data set.
+The filterc function takes no arguments and returns a numeric vector that contains the column numbers we want to keep from the merged data set.
 
 This function first reads the "features.txt" file into a variable called fet. Another variable called filtercols is created by combining columns 1, 2 and any column number containing "mean()" or "std()". The column numbers are identified using regular expressions and the grepl function. The value of 2 is added to the result to account for the first two columns "Subject" and "Activity" which are not present in the "features.txt" file.
 

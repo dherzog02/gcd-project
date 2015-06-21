@@ -9,7 +9,7 @@ output:html_document
 
 ##Summary
 
-This script creates two variables in the global environment called filtData and tidyData. The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. The specific steps taken in the script are outlined in the [README.md] file. After running the script the "tidyData.txt" file is created with the following line of code:
+This script creates two variables in the global environment called filtData and tidyData. The data set "tidyData.txt" is the output from the final step in the "run_analysis.R" script. The specific steps taken in the script are outlined in the [README.md](README.md) file. After running the script the "tidyData.txt" file is created with the following line of code:
 
 write.table(tidyData, row.name = FALSE, file = "tidyData.txt")
 
@@ -62,7 +62,7 @@ The measures column contains 66 possible values summarized below. As in the orig
 * XYZ - Denotes that this measurement has 3-axial signals separated into three different measurements, one for each direction
 * '-summarized' - This is appended to the names of the variables to distinguish these values from the values in the intermediate source table filtData
 
-###List of possible values:
+###List of values:
 
 - tBodyAcc-mean-XYZ-summarized
 - tBodyAcc-std-XYZ-summarized
